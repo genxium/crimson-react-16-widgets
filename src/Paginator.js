@@ -323,4 +323,4 @@ class Paginator extends React.Component {
 	}
 }
 
-exports.default = Paginator;
+export default Paginator;

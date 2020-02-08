@@ -4,6 +4,12 @@
   "repository": "https://github.com/genxium/crimson-react-16-widgets",
   "version": "0.0.5",
   "main": "index.js",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-react": "^7.8.3"
+  },
   "dependencies": {
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
@@ -13,11 +19,6 @@
     "mermaid": "^8.0.0-rc.8",
     "plupload": "^2.3.6"
   },
-  "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.8.4",
-    "@babel/preset-env": "^7.8.4",
-    "@babel/preset-react": "^7.8.3"
-  },
+  "type": "module",
   "license": "MIT"
 }

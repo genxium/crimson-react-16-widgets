@@ -1,30 +1,30 @@
 import {
   getRenderedComponentSize,
-} from './src/util';
+} from (pathPrefix + '/util');
 
-import YAMDRenderer from './src/YAMDRenderer';
+import YAMDRenderer from './lib/YAMDRenderer';
 
-import YAMDEditor from './src/YAMDEditor';
+import YAMDEditor from './lib/YAMDEditor');
 
-import Paginator from './src/Paginator';
+import Paginator from './lib/Paginator';
 
 import {
   SINGLE_UPLOADER_STATE,
   BATCH_UPLOADER_STATE, 
   SingleImageSelectorBundle,
   SingleImageSelectorBundleListManager,
-} from './src/ImageSelectorBundle';
+} from './lib/ImageSelectorBundle';
 
-import StatelessSingleImageSelector from './src/StatelessSingleImageSelector'; 
-import StatelessMultiImageSelector from './src/StatelessMultiImageSelector';
-import StatelessSingleVideoSelector from './src/StatelessSingleVideoSelector';
+import StatelessSingleImageSelector from './lib/StatelessSingleImageSelector'; 
+import StatelessMultiImageSelector from './lib/StatelessMultiImageSelector';
+import StatelessSingleVideoSelector from './lib/StatelessSingleVideoSelector';
 
-import KeywordListView from './src/KeywordListView';
+import KeywordListView from './lib/KeywordListView';
 
 import {
   SinglePicker,
   SinglePickerItem,
-} from './src/SinglePicker';
+} from './lib/SinglePicker';
 
 export {
   getRenderedComponentSize, 

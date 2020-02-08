@@ -1,12 +1,12 @@
 'use strict';
 
 import React from 'react';
-import 'katex/dist/katex.min.css';
-import katex from 'katex';
 
 // These modules are exported by CommonJs "module.exports = " syntax.
 const md = require('markdown-it')()
   .disable(['image']);
+const katex = require('katex'); // Exported by its "dist/katex.js" as indicated by its "package.json/main".
+require('katex/dist/katex.min.css');
 
 if ('undefined' != typeof (mermaid)) {
   mermaid.initialize({
