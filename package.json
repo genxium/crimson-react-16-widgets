@@ -6,7 +6,7 @@
   "main": "index.js",
   "dependencies": {
     "react": "^16.4.0",
-    "react-dom": "^16.4.0",
+    "react-dom": "^16.4.2",
     "whatwg-fetch": "^2.0.4",
     "katex": "^0.10.0-beta",
     "markdown-it": "^8.4.1",
