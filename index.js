@@ -1,20 +1,44 @@
-exports.getRenderedComponentSize = require('./lib/util').getRenderedComponentSize;
-exports.Paginator = require('./lib/Paginator').default;
-exports.YAMDRenderer = require('./lib/YAMDRenderer').default;
-exports.YAMDEditor = require('./lib/YAMDEditor').default;
+import {
+  getRenderedComponentSize,
+} from './src/util';
 
-exports.SINGLE_UPLOADER_STATE = require('./lib/ImageSelectorBundle').SINGLE_UPLOADER_STATE;
-exports.BATCH_UPLOADER_STATE = require('./lib/ImageSelectorBundle').BATCH_UPLOADER_STATE;
+import YAMDRenderer from './src/YAMDRenderer';
 
-exports.SingleImageSelectorBundle = require('./lib/ImageSelectorBundle').SingleImageSelectorBundle;
-exports.SingleImageSelectorBundleListManager = require('./lib/ImageSelectorBundle').SingleImageSelectorBundleListManager;
+import YAMDEditor from './src/YAMDEditor';
 
-exports.StatelessSingleImageSelector = require('./lib/StatelessSingleImageSelector').default;
-exports.StatelessMultiImageSelector = require('./lib/StatelessMultiImageSelector').default;
+import Paginator from './src/Paginator';
 
-exports.StatelessSingleVideoSelector = require('./lib/StatelessSingleVideoSelector').default;
+import {
+  SINGLE_UPLOADER_STATE,
+  BATCH_UPLOADER_STATE, 
+  SingleImageSelectorBundle,
+  SingleImageSelectorBundleListManager,
+} from './src/ImageSelectorBundle';
 
-exports.KeywordListView = require('./lib/KeywordListView').default;
+import StatelessSingleImageSelector from './src/StatelessSingleImageSelector'; 
+import StatelessMultiImageSelector from './src/StatelessMultiImageSelector';
+import StatelessSingleVideoSelector from './src/StatelessSingleVideoSelector';
 
-exports.SinglePicker = require('./lib/SinglePicker').SinglePicker;
-exports.SinglePickerItem = require('./lib/SinglePicker').SinglePickerItem;
+import KeywordListView from './src/KeywordListView';
+
+import {
+  SinglePicker,
+  SinglePickerItem,
+} from './src/SinglePicker';
+
+export {
+  getRenderedComponentSize, 
+  Paginator,
+  YAMDRenderer,
+  YAMDEditor,
+  SINGLE_UPLOADER_STATE,
+  BATCH_UPLOADER_STATE,
+  SingleImageSelectorBundle,
+  SingleImageSelectorBundleListManager,
+  StatelessSingleImageSelector,
+  StatelessMultiImageSelector,
+  StatelessSingleVideoSelector,
+  KeywordListView,
+  SinglePicker,
+  SinglePickerItem,
+};

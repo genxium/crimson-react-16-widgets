@@ -1,7 +1,7 @@
 'use strict';
 
-require('whatwg-fetch');
-const ReactDOM = require('react-dom');
+import 'whatwg-fetch';
+import ReactDOM from 'react-dom';
 
 const dictToSortedQueryStr = function (dict) {
 	let keys = Object.keys(dict);
@@ -35,5 +35,7 @@ const getRenderedComponentSize = function(ref) {
 	};
 };
 
-exports.httpGet = httpGet;
-exports.getRenderedComponentSize = getRenderedComponentSize;
+export {
+  httpGet,
+  getRenderedComponentSize 
+};

@@ -1,12 +1,14 @@
 'use strict';
 
-const React = require('react');
+import React from 'react';
 const singleSelectorContainerKeyPrefix = 'whateveryoulike-';
 
-const StatelessSingleImageSelector = require('./StatelessSingleImageSelector').default;
+import StatelessSingleImageSelector from './StatelessSingleImageSelector';
 
-const SINGLE_UPLOADER_STATE = require('./ImageSelectorBundle').SINGLE_UPLOADER_STATE;
-const BATCH_UPLOADER_STATE = require('./ImageSelectorBundle').BATCH_UPLOADER_STATE;
+import {
+  SINGLE_UPLOADER_STATE,
+  BATCH_UPLOADER_STATE,
+} from './ImageSelectorBundle';
 
 class StatelessMultiImageSelector extends React.Component {
   constructor(props) {
@@ -142,4 +144,4 @@ class StatelessMultiImageSelector extends React.Component {
   }
 }
 
-exports.default = StatelessMultiImageSelector;
+export default StatelessMultiImageSelector;

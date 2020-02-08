@@ -1,6 +1,11 @@
 'use strict';
 
-const sharedLib = require('./shared');
+import {
+  httpGet,
+  getRenderedComponentSize,
+} from './shared';
 
-exports.httpGet = sharedLib.httpGet;
-exports.getRenderedComponentSize = sharedLib.getRenderedComponentSize;
+export {
+  httpGet,
+  getRenderedComponentSize,
+};

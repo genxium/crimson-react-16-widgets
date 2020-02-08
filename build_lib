@@ -4,7 +4,8 @@ basedir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 src_files="$basedir/src/*.js"
 
-babel_call="node --max_old_space_size=4096 $basedir/node_modules/babel-cli/bin/babel.js"
+babel_call="node --max_old_space_size=4096 $basedir/node_modules/.bin/babel"
+# The babel presets to use are configured in "$basedir/.babelrc".
 
 mkdir -p $basedir/lib
 

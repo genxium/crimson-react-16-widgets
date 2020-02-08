@@ -1,7 +1,11 @@
 'use strict';
 
-const sharedLib = require('./shared');
-const React = require('react');
+import {
+  httpGet,
+  getRenderedComponentSize,
+} from './shared';
+
+import React from 'react';
 
 class Paginator extends React.Component {
 
@@ -15,7 +19,7 @@ class Paginator extends React.Component {
 		};
 
 		Object.assign(paramDict, collectFilters());
-		return sharedLib.httpGet(dataUrl, paramDict)
+		return httpGet(dataUrl, paramDict)
 			.then(function (response) {
 				return response.json();
 			})
@@ -43,7 +47,7 @@ class Paginator extends React.Component {
 			key: idx,
 			ref: (c) => {
 				if (!c) return;
-				const newHeight = sharedLib.getRenderedComponentSize(c).height;
+				const newHeight = getRenderedComponentSize(c).height;
 				const theIdx = c.props.idx;
 				let headerHeightDict = {};
 				for (let k in widgetRef.state.headerHeightDict) {
@@ -118,7 +122,7 @@ class Paginator extends React.Component {
 			key: idx,
 			ref: (c) => {
 				if (!c) return;
-				const newHeight = sharedLib.getRenderedComponentSize(c).height;
+				const newHeight = getRenderedComponentSize(c).height;
 				const theIdx = c.props.idx;
 				let cellHeightDict = {};
 				for (let k in widgetRef.state.cellHeightDict) {
@@ -146,7 +150,7 @@ class Paginator extends React.Component {
 			key: idx,
 			ref: (c) => {
 				if (!c) return;
-				const newHeight = sharedLib.getRenderedComponentSize(c).height;
+				const newHeight = getRenderedComponentSize(c).height;
 				const theIdx = c.props.idx;
 				let headerHeightDict = {};
 				for (let k in widgetRef.state.headerHeightDict) {

@@ -1,11 +1,14 @@
 'use strict'
 
-const React = require('react');
-const ReactDOM = require('react-dom');
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-const SinglePicker = require('./SinglePicker').SinglePicker;
-const SinglePickerItem = require('./SinglePicker').SinglePickerItem;
-const YAMDRenderer = require('./YAMDRenderer').default;
+import {
+  SinglePicker,
+  SinglePickerItem,
+} from './SinglePicker';
+
+import YAMDRenderer from './YAMDRenderer';
 
 class YAMDEditor extends React.Component {
   constructor(props) {
@@ -18,7 +21,7 @@ class YAMDEditor extends React.Component {
     };
   }
 
-  insertVideoAtCursor = (videoIdx) => {
+  insertVideoAtCursor(videoIdx) {
     const widgetRef = this;
     if (!widgetRef._inputRef) return;
     const props = widgetRef.props;
@@ -28,9 +31,9 @@ class YAMDEditor extends React.Component {
     const currentValue = widgetRef._inputRef.value;
     const newValue = currentValue.slice(0, cursorIndex) + "\n!{" + props.videoTag + "}%" + videoIdx + "%\n" + currentValue.slice(cursorIndex, currentValue.length);
     props.onContentChangedBridge(newValue);
-  };
+  }
 
-  insertImageAtCursor = (imageIdx) => {
+  insertImageAtCursor(imageIdx) {
     const widgetRef = this;
     if (!widgetRef._inputRef) return;
     const props = widgetRef.props;
@@ -40,7 +43,7 @@ class YAMDEditor extends React.Component {
     const currentValue = widgetRef._inputRef.value;
     const newValue = currentValue.slice(0, cursorIndex) + "\n!{" + props.imgTag + "}%" + imageIdx + "%\n" + currentValue.slice(cursorIndex, currentValue.length);
     props.onContentChangedBridge(newValue);
-  };
+  }
 
   render() {
     const widgetRef = this;
@@ -402,4 +405,4 @@ class YAMDEditor extends React.Component {
   }
 }
 
-exports.default = YAMDEditor;
+export default YAMDEditor;

@@ -178,8 +178,9 @@ class SingleImageSelectorBundleListManager {
 	}
 }
 
-exports.SINGLE_UPLOADER_STATE = SINGLE_UPLOADER_STATE;
-exports.BATCH_UPLOADER_STATE = BATCH_UPLOADER_STATE;
-
-exports.SingleImageSelectorBundle = SingleImageSelectorBundle;
-exports.SingleImageSelectorBundleListManager = SingleImageSelectorBundleListManager;
+export {
+  SINGLE_UPLOADER_STATE,
+  BATCH_UPLOADER_STATE,
+  SingleImageSelectorBundle,
+  SingleImageSelectorBundleListManager,
+};

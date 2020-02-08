@@ -1,13 +1,14 @@
 'use strict';
 
-const React = require('react');
-const ReactDOM = require('react-dom');
-
-const SINGLE_UPLOADER_STATE = require('./ImageSelectorBundle').SINGLE_UPLOADER_STATE;
-
-const PlupLoad = require('plupload');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {
+  SINGLE_UPLOADER_STATE,
+} from './ImageSelectorBundle';
 
 const LIST_INDEX = 'listIndex';
+// These modules are exported by CommonJs "module.exports = " syntax.
+const PlupLoad = require('plupload');  
 
 class StatelessSingleVideoSelector extends React.Component {
   constructor(props) {
@@ -331,4 +332,4 @@ class StatelessSingleVideoSelector extends React.Component {
   }
 }
 
-exports.default = StatelessSingleVideoSelector;
+export default StatelessSingleVideoSelector;

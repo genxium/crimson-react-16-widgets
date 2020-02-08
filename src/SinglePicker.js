@@ -1,7 +1,7 @@
 'use strict'
 
-const React = require('react');
-const ReactDOM = require('react-dom');
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 const magicCellWidthPx = 128;
 const magicCellHeightPx = 32;
@@ -138,5 +138,7 @@ class SinglePicker extends React.Component {
   }
 }
 
-exports.SinglePickerItem = SinglePickerItem;
-exports.SinglePicker = SinglePicker;
+export {
+  SinglePickerItem,
+  SinglePicker,
+};

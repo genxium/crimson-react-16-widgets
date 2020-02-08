@@ -6,7 +6,7 @@ if(undefined === String.prototype.trim) {
   };
 }
 
-const React = require('react');
+import React from 'react';
 
 class KeywordListView extends React.Component {
   constructor(props) {
@@ -167,4 +167,4 @@ class KeywordListView extends React.Component {
   }
 }
 
-exports.default = KeywordListView;
+export default KeywordListView;
