@@ -1,44 +1,19 @@
-import {
-  getRenderedComponentSize,
-} from './lib/util';
+import { getRenderedComponentSize, } from './src/util';
 
-import YAMDRenderer from './lib/YAMDRenderer';
+import YAMDRenderer from './src/YAMDRenderer';
 
-import YAMDEditor from './lib/YAMDEditor');
+import YAMDEditor from './src/YAMDEditor';
 
-import Paginator from './lib/Paginator';
+import Paginator from './src/Paginator';
 
-import {
-  SINGLE_UPLOADER_STATE,
-  BATCH_UPLOADER_STATE, 
-  SingleImageSelectorBundle,
-  SingleImageSelectorBundleListManager,
-} from './lib/ImageSelectorBundle';
+import { SINGLE_UPLOADER_STATE, BATCH_UPLOADER_STATE, SingleImageSelectorBundle, SingleImageSelectorBundleListManager, } from './src/ImageSelectorBundle';
 
-import StatelessSingleImageSelector from './lib/StatelessSingleImageSelector'; 
-import StatelessMultiImageSelector from './lib/StatelessMultiImageSelector';
-import StatelessSingleVideoSelector from './lib/StatelessSingleVideoSelector';
+import StatelessSingleImageSelector from './src/StatelessSingleImageSelector';
+import StatelessMultiImageSelector from './src/StatelessMultiImageSelector';
+import StatelessSingleVideoSelector from './src/StatelessSingleVideoSelector';
 
-import KeywordListView from './lib/KeywordListView';
+import KeywordListView from './src/KeywordListView';
 
-import {
-  SinglePicker,
-  SinglePickerItem,
-} from './lib/SinglePicker';
+import { SinglePicker, SinglePickerItem, } from './src/SinglePicker';
 
-export {
-  getRenderedComponentSize, 
-  Paginator,
-  YAMDRenderer,
-  YAMDEditor,
-  SINGLE_UPLOADER_STATE,
-  BATCH_UPLOADER_STATE,
-  SingleImageSelectorBundle,
-  SingleImageSelectorBundleListManager,
-  StatelessSingleImageSelector,
-  StatelessMultiImageSelector,
-  StatelessSingleVideoSelector,
-  KeywordListView,
-  SinglePicker,
-  SinglePickerItem,
-};
+export { getRenderedComponentSize, Paginator, YAMDRenderer, YAMDEditor, SINGLE_UPLOADER_STATE, BATCH_UPLOADER_STATE, SingleImageSelectorBundle, SingleImageSelectorBundleListManager, StatelessSingleImageSelector, StatelessMultiImageSelector, StatelessSingleVideoSelector, KeywordListView, SinglePicker, SinglePickerItem, };
