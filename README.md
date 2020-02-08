@@ -1,0 +1,1 @@
+In some cases, using "npm install /path/to/crimson-react-16-widgets" for a downstream application would fail to flatten dependencies of this module, e.g. "katex" and "mermaid". If such unfortunate situation comes up, to update and debug this module locally, you might need publish it to a "local npm registry" for a downstream application to install correctly. 

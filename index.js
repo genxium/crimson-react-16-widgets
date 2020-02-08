@@ -1,6 +1,6 @@
 import {
   getRenderedComponentSize,
-} from (pathPrefix + '/util');
+} from './lib/util';
 
 import YAMDRenderer from './lib/YAMDRenderer';
 
