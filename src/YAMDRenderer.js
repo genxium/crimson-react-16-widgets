@@ -16,6 +16,7 @@ if ('undefined' != typeof (mermaid)) {
 
 class YAMDRenderer extends React.Component {
   constructor(props) {
+    super(props);
     this.state = {
       dangerousInnerHTML: "",
       mermaidSubstituteResidualList: [],
