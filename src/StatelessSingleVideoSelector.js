@@ -293,7 +293,7 @@ class StatelessSingleVideoSelector extends React.Component {
       </View>
     );
 
-    const BrowserButtonComponent = props.BrowserButtonComponent;
+    const BrowseButtonComponent = props.BrowseButtonComponent;
     const browseButton = (
       <View
       key='single-video-selector-browse-btn'
@@ -311,7 +311,7 @@ class StatelessSingleVideoSelector extends React.Component {
         widgetRef._browseBtnRef = c;
       }}
       >
-        <BrowserButtonComponent />
+        <BrowseButtonComponent />
       </View>
     );
 

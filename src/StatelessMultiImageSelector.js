@@ -109,7 +109,7 @@ class StatelessMultiImageSelector extends React.Component {
           allowedMimeList={allowedMimeList}
           uploadedMark={uploadedMark}
           progressBarColor={props.progressBarColor}
-          BrowserButtonComponent={props.BrowserButtonComponent}
+          BrowseButtonComponent={props.BrowseButtonComponent}
           shouldDisable={ () => {
             return shouldDisable();
           }}

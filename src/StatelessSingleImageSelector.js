@@ -299,7 +299,7 @@ class StatelessSingleImageSelector extends React.Component {
       </View>
     );
 
-    const BrowserButtonComponent = props.BrowserButtonComponent;
+    const BrowseButtonComponent = props.BrowseButtonComponent;
     const browseButtonHeightPx = parseInt(sizePx.h * 0.7);
     const browseButtonTopOffsetPx = ((sizePx.h - browseButtonHeightPx) >> 1); 
 
@@ -320,7 +320,7 @@ class StatelessSingleImageSelector extends React.Component {
         widgetRef._browseBtnRef = c;
       }}
       >
-        <BrowserButtonComponent 
+        <BrowseButtonComponent 
         style={{
           position: "absolute",
           top: browseButtonTopOffsetPx,
