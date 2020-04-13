@@ -29,45 +29,51 @@ function localGuid() {
 class SingleImageSelectorBundle {
   constructor(props) {
     this.id =  localGuid();
-		if (null === props || undefined === props) {
-			// NOTE: All of `uploaderState`, `effectiveImgSrc` and `progressPercentage` are app-scope identifiers/variables, which are independent of CDN provider, e.g. Qiniu.
+		if (null == props) {
+			// NOTE: All of `uploaderState`, `effectiveImgSrc/effectiveVideoSrc` and `progressPercentage` are app-scope identifiers/variables, which are independent of CDN provider, e.g. Qiniu.
 			this.uploaderState = SINGLE_UPLOADER_STATE.CREATED;
 			this.effectiveImgSrc = null;
+			this.effectiveVideoSrc = null;
 			this.progressPercentage = 0.0;
 
 			// NOTE: The `extUploader` itself is stateful, i.e. contains a state-automata.
 			this.extUploader = null;
 			return;
 		}	
-		this.uploaderState = (undefined === props.uploaderState ? SINGLE_UPLOADER_STATE.CREATED : props.uploaderState);
-		this.effectiveImgSrc = (undefined === props.effectiveImgSrc ? null : props.effectiveImgSrc);
-		this.progressPercentage = ((undefined === props.progressPercentage || null === props.progressPercentage) ? 0.0 : props.progressPercentage);
+		this.uploaderState = (null == props.uploaderState ? SINGLE_UPLOADER_STATE.CREATED : props.uploaderState);
+		this.effectiveImgSrc = (null == props.effectiveImgSrc ? null : props.effectiveImgSrc);
+		this.effectiveVideoSrc = (null == props.effectiveVideoSrc ? null : props.effectiveVideoSrc);
+		this.progressPercentage = (null == props.progressPercentage ? 0.0 : props.progressPercentage);
 		
 		// NOTE: The member `extUploader` COULDN'T be assigned by constructor!
 		this.extUploader = null;
   }
 	
 	assign(props) {
-		if (undefined !== props.uploaderState) {
+		if (null != props.uploaderState) {
 			this.uploaderState = props.uploaderState;
 		}
-		if (undefined !== props.effectiveImgSrc) {
+		if (null != props.effectiveImgSrc) {
 			this.effectiveImgSrc = props.effectiveImgSrc;
 		}
-		if (undefined !== props.progressPercentage && null !== props.progressPercentage) {
+		if (null != props.effectiveVideoSrc) {
+			this.effectiveVideoSrc = props.effectiveVideoSrc;
+		}
+		if (null != props.progressPercentage) {
 			this.progressPercentage = props.progressPercentage;
 		}
 	}
 
 	reset(props) {
 		this._explicitlyDestruct();
-		if (undefined === props || null === props)	return;
+		if (null == props)	return;
 
-		this.uploaderState = (undefined === props.uploaderState ? SINGLE_UPLOADER_STATE.CREATED : props.uploaderState);
-		this.effectiveImgSrc = (undefined === props.effectiveImgSrc ? null : props.effectiveImgSrc);
-		this.progressPercentage = ((undefined === props.progressPercentage || null === props.progressPercentage) ? 0.0 : props.progressPercentage);
+		this.uploaderState = (null == props.uploaderState ? SINGLE_UPLOADER_STATE.CREATED : props.uploaderState);
+		this.effectiveImgSrc = (null == props.effectiveImgSrc ? null : props.effectiveImgSrc);
+		this.effectiveVideoSrc = (null == props.effectiveVideoSrc ? null : props.effectiveVideoSrc);
+		this.progressPercentage = (null == props.progressPercentage ? 0.0 : props.progressPercentage);
 		
-		this.extUploader = ((undefined === props.extUploader || null === props.extUploader) ? null : props.extUploader);
+		this.extUploader = (null == props.extUploader ? null : props.extUploader);
 	}
 
 	isOccupied() {
@@ -79,6 +85,7 @@ class SingleImageSelectorBundle {
 	_explicitlyDestruct() {
 		this.uploaderState = SINGLE_UPLOADER_STATE.CREATED;
 		this.effectiveImgSrc = null;
+		this.effectiveVideoSrc = null;
 		this.progressPercentage = 0.0;		
 		
 		if (null !== this.extUploader) {
