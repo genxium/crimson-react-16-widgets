@@ -51,7 +51,7 @@ class StatelessSingleVideoSelector extends React.Component {
       if (!widgetRef._validateSelection(targetFile)) {
         props.showFileRequirementHint();
         onLocalVideoAddedBridge(listIndex, {
-          effectiveImgSrc: null,
+          effectiveVideoSrc: null,
         });
         return;
       }
@@ -60,7 +60,7 @@ class StatelessSingleVideoSelector extends React.Component {
       uploaderSelf.refresh();
       widgetRef.props.onLocalVideoAddedBridge(uploaderSelf.getOption(LIST_INDEX), {
         uploaderState: SINGLE_UPLOADER_STATE.LOCALLY_PREVIEWING,
-        effectiveImgSrc: (window.URL ? URL : webkitURL).createObjectURL(targetFile.getNative()),
+        effectiveVideoSrc: (window.URL ? URL : webkitURL).createObjectURL(targetFile.getNative()),
       });
     });
 
@@ -105,7 +105,7 @@ class StatelessSingleVideoSelector extends React.Component {
     props.onNewBundleInitializedBridge(widgetRef.props.listIndex, {
       uploaderState: SINGLE_UPLOADER_STATE.INITIALIZED,
       progressPercentage: 0.0,
-      effectiveImgSrc: null,
+      effectiveVideoSrc: null,
       extUploader: extUploader,
     });
   }
@@ -205,6 +205,8 @@ class StatelessSingleVideoSelector extends React.Component {
     const shouldHideVideo = (SINGLE_UPLOADER_STATE.INITIALIZED == bundle.uploaderState);
     const shouldHideBrowseButton = (SINGLE_UPLOADER_STATE.INITIALIZED != bundle.uploaderState || shouldDisable());
 
+    const shouldShowControls = props.controls;
+
     const shouldDisableEditButton = (!bundle.isOccupied() || shouldDisable());
 
     const progressBar = (
@@ -260,23 +262,23 @@ class StatelessSingleVideoSelector extends React.Component {
           width: sizePx.w,
           height: sizePx.h,
         }}
+        onClick={(evt) => {
+          if (shouldDisableEditButton) return;
+          onVideoEditorTriggeredBridge(widgetRef.props.listIndex);
+        }}
       >
-        <video
-          controls={true}
+        <Video
+          controls={shouldShowControls}
           key='single-video-selector-preview'
-          src={bundle.effectiveImgSrc}
+          src={bundle.effectiveVideoSrc}
           style={{
             display: (shouldHideVideo ? "none" : "block"),
             width: sizePx.w,
             height: (shouldHideVideo ? 0 : (sizePx.h - progressBarSectionHeightPx)),
             objectFit: "contain",
           }}
-          onClick={(evt) => {
-            if (shouldDisableEditButton) return;
-            onVideoEditorTriggeredBridge(widgetRef.props.listIndex);
-          }}
         >
-        </video>
+        </Video>
         <View
           style={{
             display: (!shouldHideBrowseButton ? "none" : "block"),
