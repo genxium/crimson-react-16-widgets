@@ -218,16 +218,21 @@ class YAMDRenderer extends React.Component {
     const previewableVideoList = props.previewableVideoList;
     const disableTeX = props.disableTeX;
     const disableMermaid = props.disableMermaid;
+
+    if (true != disableMermaid && 'undefined' != typeof (mermaid)) {
+      mermaid.init(props.mermaidOptions, ".mermaid");
+    }
     widgetRef.renderWithWholePipelineAsync(source, previewableImageList, previewableVideoList, disableTeX, disableMermaid);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(prevProps) {
     const widgetRef = this;
-    const source = nextProps.source;
-    const previewableImageList = nextProps.previewableImageList;
-    const previewableVideoList = nextProps.previewableVideoList;
-    const disableTeX = nextProps.disableTeX;
-    const disableMermaid = nextProps.disableMermaid;
+    const props = widgetRef.props;
+    const source = props.source;
+    const previewableImageList = props.previewableImageList;
+    const previewableVideoList = props.previewableVideoList;
+    const disableTeX = props.disableTeX;
+    const disableMermaid = props.disableMermaid;
     widgetRef.renderWithWholePipelineAsync(source, previewableImageList, previewableVideoList, disableTeX, disableMermaid);
   }
 
@@ -244,15 +249,6 @@ class YAMDRenderer extends React.Component {
     }, null);
   }
 
-  componentDidUpdate() {
-    const widgetRef = this;
-    const props = widgetRef.props;
-    const disableMermaid = props.disableMermaid;
-    if (true == disableMermaid) return;
-
-    if ('undefined' == typeof (mermaid)) return;
-    mermaid.init(props.mermaidOptions, ".mermaid");
-  }
 }
 
 export default YAMDRenderer;
