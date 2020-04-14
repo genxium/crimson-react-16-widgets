@@ -14,7 +14,6 @@ class YAMDEditor extends React.Component {
   constructor(props) {
     super(props);
     this._inputRef = null;
-    this._previewRef = null;
 
     this.state = {
       cachedTextToRender: "",
@@ -45,6 +44,11 @@ class YAMDEditor extends React.Component {
     props.onContentChangedBridge(newValue);
   }
 
+  shouldHidePreview() {
+    const widgetRef = this;
+    return (!widgetRef.props.shouldDisable() && widgetRef.state.cachedTextToRender != widgetRef.props.content);
+  }
+
   render() {
     const widgetRef = this;
     const props = widgetRef.props;
@@ -57,12 +61,12 @@ class YAMDEditor extends React.Component {
 
     const onContentChangedBridge = props.onContentChangedBridge;
 
-    const shouldHideShortcutBar = (undefined == props.shouldHideShortcutBar || null == props.shouldHideShortcutBar ? true : props.shouldHideShortcutBar);
-    const hideVideoPickerWhenListEmpty = (undefined == props.hideVideoPickerWhenListEmpty || null == props.hideVideoPickerWhenListEmpty ? true : props.hideVideoPickerWhenListEmpty);
-    const hideImagePickerWhenListEmpty = (undefined == props.hideImagePickerWhenListEmpty || null == props.hideImagePickerWhenListEmpty ? true : props.hideImagePickerWhenListEmpty);
+    const shouldHideShortcutBar = (null == props.shouldHideShortcutBar ? true : props.shouldHideShortcutBar);
+    const hideVideoPickerWhenListEmpty = (null == props.hideVideoPickerWhenListEmpty ? true : props.hideVideoPickerWhenListEmpty);
+    const hideImagePickerWhenListEmpty = (null == props.hideImagePickerWhenListEmpty ? true : props.hideImagePickerWhenListEmpty);
 
     let videoItemList = [];
-    if (undefined !== previewableVideoList && null !== previewableVideoList) {
+    if (null != previewableVideoList) {
       for (let i = 0; i < previewableVideoList.length; ++i) {
         const singleVideoItem = React.createElement(SinglePickerItem, {
           key: i,
@@ -90,7 +94,7 @@ class YAMDEditor extends React.Component {
     }, videoItemList);
 
     let imageItemList = [];
-    if (undefined !== previewableImageList && null !== previewableImageList) {
+    if (null != previewableImageList) {
       for (let i = 0; i < previewableImageList.length; ++i) {
         const singleImageItem = React.createElement(SinglePickerItem, {
           key: i,
@@ -354,52 +358,9 @@ class YAMDEditor extends React.Component {
       },
     });
 
-    const refreshPreviewBtn = React.createElement('div', {
-      style: {
-        marginTop: 3,
-        display: (widgetRef.state.cachedTextToRender == content || shouldDisable() ? 'none' : 'block'),
-        textAlign: 'center',
-        width: '100%',
-      },
-    }, React.createElement('button', {
-        disabled: shouldDisable(),
-        style: {
-          fontSize: 14,
-        },
-        onClick: (evt) => {
-          widgetRef.setState({
-            cachedTextToRender: content,
-          });
-        },
-      }, props.previewHint)
-    );
-    
-    const shouldHidePreview = (!shouldDisable() && widgetRef.state.cachedTextToRender != content); 
-    const previewSrc = (shouldDisable() ? content : widgetRef.state.cachedTextToRender);
-
-    const preview = React.createElement(YAMDRenderer, {
-      style: {
-        marginTop: 3,
-        width: '100%',
-        display: (shouldHidePreview ? 'none' : 'block'),
-        padding: 10,
-      },
-      imgTag: props.imgTag,
-      ktxTag: props.ktxTag,
-      mermaidTag: props.mermaidTag,
-      alignCenterTag: props.alignCenterTag,
-      previewableVideoList: previewableVideoList,
-      previewableImageList: previewableImageList,
-      source: previewSrc,
-      ref: function(c) {
-        if (!c) return;
-        widgetRef._previewRef = c;
-      }
-    });
-
     const container = React.createElement('div', {
       style: props.style,
-    }, shortcutBar, input, refreshPreviewBtn, preview);
+    }, shortcutBar, input);
 
     return container;
   }

@@ -2,7 +2,7 @@
   "name": "crimson-react-widgets",
   "description": "",
   "repository": "https://github.com/genxium/crimson-react-16-widgets",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "main": "index.js",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
