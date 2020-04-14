@@ -65,7 +65,7 @@ class YAMDRenderer extends React.Component {
       });
     }
 
-    const regex = new RegExp('\!\{' + props.videoTag + '\}\%(\d+)\%', 'g');
+    const regex = new RegExp('\!\{' + props.videoTag + '\}\%(\\d+)\%', 'g');
     const newContent = content.replace(regex, function(match, param1, offset, wholeString) {
       if (typeof previewableVideoList[param1] != 'undefined') {
         const src = previewableVideoList[param1].src;
