@@ -233,7 +233,43 @@ class YAMDRenderer extends React.Component {
     const previewableVideoList = props.previewableVideoList;
     const disableTeX = props.disableTeX;
     const disableMermaid = props.disableMermaid;
-    widgetRef.renderWithWholePipelineAsync(source, previewableImageList, previewableVideoList, disableTeX, disableMermaid);
+
+    let anythingChanged = false;
+    if (source != prevProps.source) anythingChanged = true;
+    if (disableTeX != prevProps.disableTeX) anythingChanged = true;
+    if (disableMermaid != prevProps.disableMermaid) anythingChanged = true;
+
+    if (null != previewableImageList && null == prevProps.previewableImageList) {
+      anythingChanged = true;
+    } else if (null == previewableImageList && null != prevProps.previewableImageList) {
+      anythingChanged = true;
+    } else if (previewableImageList.length != prevProps.previewableImageList.length) {
+      anythingChanged = true;
+    } else {
+      for (let i in previewableImageList) {
+        if (previewableImageList[i] == prevProps.previewableImageList[i]) continue;
+        anythingChanged = true;
+        break;
+      }
+    }
+
+    if (null != previewableVideoList && null == prevProps.previewableVideoList) {
+      anythingChanged = true;
+    } else if (null == previewableVideoList && null != prevProps.previewableVideoList) {
+      anythingChanged = true;
+    } else if (previewableVideoList.length != prevProps.previewableVideoList.length) {
+      anythingChanged = true;
+    } else {
+      for (let i in previewableVideoList) {
+        if (previewableVideoList[i] == prevProps.previewableVideoList[i]) continue;
+        anythingChanged = true;
+        break;
+      }
+    }
+
+    if (true == anythingChanged) {
+      widgetRef.renderWithWholePipelineAsync(source, previewableImageList, previewableVideoList, disableTeX, disableMermaid);
+    }
   }
 
   render() {
