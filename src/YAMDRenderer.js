@@ -199,19 +199,20 @@ class YAMDRenderer extends React.Component {
         return widgetRef.mermaidSubstituteToRenderableAsync(newSource, disableMermaid);
       })
       .then(function(rendered) {
-        return new Promise(function(resolve, reject) {
-          widgetRef.setState({
-            mermaidSubstituteResidualList: rendered.substitueResidualList,
-            dangerousInnerHTML: rendered.content,
-          }, function() {
-            resolve(true);
-          });
+        if (true == widgetRef.willUnmountInvoked) {
+          return;
+        }  
+        return widgetRef.setState({
+          mermaidSubstituteResidualList: rendered.substitueResidualList,
+          dangerousInnerHTML: rendered.content,
         });
       });
   }
 
   componentDidMount() {
     const widgetRef = this;
+    widgetRef.willUnmountInvoked = false;
+
     const props = widgetRef.props;
     const source = props.source;
     const previewableImageList = props.previewableImageList;
@@ -223,6 +224,11 @@ class YAMDRenderer extends React.Component {
       mermaid.init(props.mermaidOptions, ".mermaid");
     }
     widgetRef.renderWithWholePipelineAsync(source, previewableImageList, previewableVideoList, disableTeX, disableMermaid);
+  }
+
+  componentWillUnmount() {
+    const widgetRef = this;
+    widgetRef.willUnmountInvoked = true;
   }
 
   componentDidUpdate(prevProps) {
